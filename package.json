@@ -1,0 +1,22 @@
+{
+  "name": "koa-lemon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/bodyparser": "^5.1.1",
+    "koa": "^2.15.3",
+    "koa-body": "^6.0.1",
+    "koa-bodyparser": "^4.4.1",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^12.0.1",
+    "mongoose": "^8.4.4",
+    "mysql2": "^3.10.2"
+  }
+}
