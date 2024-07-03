@@ -5,12 +5,6 @@ const { bodyParser } = require("@koa/bodyparser");
 const app = new Koa();
 app.use(bodyParser());
 
-// app.use((ctx) => {
-//   // the parsed body will store in ctx.request.body
-//   // if nothing was parsed, body will be an empty object {}
-//   ctx.body = ctx.request.body;
-// });
-
 const Router = require("koa-router");
 const { usersFromData, userFromData } = require("./data");
 const router = new Router();
@@ -36,7 +30,6 @@ router.post("/user/add", async (ctx) => {
 
 //  ! 查询用户列表和用户信息
 router.get("/user/list", async (ctx) => {
-  // ctx.body = usersFromData;
   const { pageNo, pageSize } = ctx.query;
   const sql = `select * from user limit ${
     (pageNo - 1) * pageSize
@@ -53,7 +46,6 @@ router.get("/user/list", async (ctx) => {
 });
 
 router.get("/user/findOneByName/:name", async (ctx) => {
-  // ctx.body = userFromData;
   const { name } = ctx.params;
   const sql = `select * from user where username = '${name}'`;
   const res = await query(sql);
