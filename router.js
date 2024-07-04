@@ -6,7 +6,6 @@ const app = new Koa();
 app.use(bodyParser());
 
 const Router = require("koa-router");
-const { usersFromData, userFromData } = require("./data");
 const router = new Router();
 
 router.get("/", async (ctx) => {
@@ -19,7 +18,6 @@ router.get("/about", async (ctx) => {
 
 // ! 添加用户
 router.post("/user/add", async (ctx) => {
-  console.log(ctx);
   const { username, age, code, address, phone, password } = ctx.request.body;
   const sql = `insert into user ( username, age, code, address, phone, password) values ('${username}', '${age}', '${code}', '${address}', '${phone}', '${password}')`;
   const result = await query(sql);
@@ -35,7 +33,7 @@ router.get("/user/list", async (ctx) => {
     (pageNo - 1) * pageSize
   }, ${pageSize}`;
 
-  const content = await query(sql);
+  const content = await query(sql); // 查询用户列表
 
   const total = await query("select count(*) from user");
 
@@ -56,6 +54,7 @@ router.get("/user/findOneByName/:name", async (ctx) => {
 router.post("/user/update", async (ctx) => {
   const { id, username, age, code, address, phone, password } =
     ctx.request.body;
+
   const sql = `update user set username = '${username}', age = '${age}', code = '${code}', address = '${address}', phone = '${phone}', password = '${password}' where id = ${id}`;
   const result = await query(sql);
   ctx.body = { id, username, age, code, address, phone, password };
@@ -71,6 +70,4 @@ router.post("/user/delete/:id", async (ctx) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
-});
+app.listen(3000, () => {});

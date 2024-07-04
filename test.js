@@ -1,9 +1,8 @@
 const Koa = require("koa");
 const { query } = require("./mysql");
-const { bodyParser } = require("@koa/bodyparser");
+const { bodyParser } = require("koa-bodyparser"); // 协议解析 https://www.npmjs.com/package/koa-bodyparser
 
 const app = new Koa();
-app.use(bodyParser());
 
 const Router = require("koa-router");
 const { usersFromData, userFromData } = require("./data");
@@ -22,7 +21,7 @@ router.get("/user/list", async (ctx) => {});
 
 router.get("/user/findOneByName/:name", async (ctx) => {});
 
-app.use(router.routes()).use(router.allowedMethods());
+app.use(bodyParser()).use(router.routes()).use(router.allowedMethods());
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
