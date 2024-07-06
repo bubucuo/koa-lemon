@@ -19,6 +19,7 @@ router.get("/about", async (ctx) => {
 //  todo 查询用户列表和用户信息
 router.get("/user/list", async (ctx) => {});
 
+// todo
 router.get("/user/findOneByName/:name", async (ctx) => {});
 
 app.use(bodyParser()).use(router.routes()).use(router.allowedMethods());
