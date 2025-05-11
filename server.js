@@ -1,3 +1,5 @@
+// ! 不要删除这个文件，yu-next会用，React19的课程里在用
+
 // cjs
 const Koa = require("koa");
 const app = new Koa();
@@ -7,7 +9,7 @@ app.use(async (ctx) => {
   // ctx.body = "Hello KOA";
   ctx.body = {
     message: "Hello Hello",
-    title: "ooo Hello World",
+    title: "ooo Hello World sy",
   };
 });
 
